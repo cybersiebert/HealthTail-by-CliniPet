@@ -4,9 +4,9 @@
 ================================================================================
     Step 1 – Data Cleaning & Aggregation for HealthTail Project (Clinipet)
 --------------------------------------------------------------------------------
-    Author:     [YOUR NAME]
+    Author:     Matthias Siebert
     Project:    clinipet-462608.healthtail_integration
-    Date:       [INSERT DATE]
+    Date:       2025-06-11
 --------------------------------------------------------------------------------
     Description:
     1. Creates a cleaned table 'registration_clean' from the patient registration
@@ -69,9 +69,9 @@ SELECT * FROM stock_out;
 ================================================================================
     Step 2 – Research Questions: Medication Audit (HealthTail)
 --------------------------------------------------------------------------------
-    Author:     [YOUR NAME]
+    Author:     Matthias Siebert
     Project:    clinipet-462608.healthtail_consumer
-    Date:       [INSERT DATE]
+    Date:       2025-06-11
 --------------------------------------------------------------------------------
     Instructions:
     Each research question is implemented as a VIEW in
