@@ -1,5 +1,5 @@
-# HealthTail-by-CliniPet
-# Stock Analytic
+## HealthTail Medication Flow – Stock In & Stock Out Analytics
+# Monthly Medication Inventory Insights
 /*
 ================================================================================
     Step 1 – Data Cleaning & Aggregation for HealthTail Project (Clinipet)
