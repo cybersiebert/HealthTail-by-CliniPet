@@ -1,3 +1,4 @@
+/*
 # HealthTail Medication Flow – Stock In & Stock Out Analytics
 ## Monthly Medication Inventory Insights
 
@@ -14,6 +15,7 @@
         - Converts patient names to uppercase
         - Cleans the phone numbers to keep digits only
         - Replaces missing values in 'breed' with 'Unknown'
+        - Left Join with visits
     2. Creates the aggregated table 'med_audit' to summarize monthly
        medication stock movement:
         - Aggregates purchased medications ("stock in")
@@ -21,7 +23,7 @@
     Both tables are saved in the dataset 'clinipet-462608.healthtail_integration'
     and serve as the foundation for further analysis and the Looker Studio dashboard.
 ================================================================================
-
+*/
 
 -- Step 1: Create a cleaned registration table, joining with visits for richer analysis
 CREATE OR REPLACE TABLE clinipet-462608.healthtail_integration.registration_clean_with_visits AS
