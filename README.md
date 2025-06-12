@@ -9,7 +9,7 @@
     Date:       2025-06-11
 --------------------------------------------------------------------------------
     Description:
-    1. Creates a cleaned table 'registration_clean' from the patient registration
+    1. Creates a cleaned table 'registration_clean_with visits' from the patient registration
        cards (healthtail_reg_cards):
         - Converts patient names to uppercase
         - Cleans the phone numbers to keep digits only
@@ -23,20 +23,34 @@
 ================================================================================
 
 
--- 1. DATA CLEANING: Create registration_clean table in the target dataset
-CREATE OR REPLACE TABLE clinipet-462608.healthtail_integration.registration_clean AS
+-- Step 1: Create a cleaned registration table, joining with visits for richer analysis
+CREATE OR REPLACE TABLE clinipet-462608.healthtail_integration.registration_clean_with_visits AS
 SELECT
-  patient_id,
-  owner_id,
-  UPPER(patient_name) AS patient_name,
-  pet_type,
-  COALESCE(NULLIF(breed, ''), 'Unknown') AS breed,
-  gender,
-  patient_age,
-  date_registration,
-  REGEXP_REPLACE(owner_phone, r'\D', '') AS owner_phone,
-  owner_name
-FROM clinipet-462608.healthtail_integration.healthtail_reg_cards;
+  reg.patient_id,
+  reg.owner_id,
+  UPPER(reg.patient_name) AS patient_name,
+  reg.pet_type,
+  COALESCE(NULLIF(reg.breed, ''), 'Unknown') AS breed,
+  reg.gender,
+  reg.patient_age,
+  reg.date_registration,
+  REGEXP_REPLACE(reg.owner_phone, r'\D', '') AS owner_phone,
+  reg.owner_name,
+  v.visit_id,
+  v.visit_datetime,
+  v.diagnosis,
+  v.doctor,
+  v.med_prescribed,
+  v.med_cost,
+  v.med_dosage
+FROM
+  clinipet-462608.healthtail_stage.healthtail_reg_cards reg
+LEFT JOIN
+  clinipet-462608.healthtail_stage.visits v
+ON
+  reg.patient_id = v.patient_id;
+
+-- This table combines cleaned registration data with visit-level info for all relevant analyses.
 
 -- 2. AGGREGATED TABLE: Create med_audit table in the target dataset
 CREATE OR REPLACE TABLE clinipet-462608.healthtail_integration.med_audit AS
