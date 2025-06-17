@@ -10,7 +10,7 @@
     Date:       2025-06-11
 --------------------------------------------------------------------------------
     Description:
-    1. Creates a cleaned table 'registration_clean_with visits' from the patient registration
+    1. Creates a cleaned table 'registration_clean_with_visits' from the patient registration
        cards (healthtail_reg_cards):
         - Converts patient names to uppercase
         - Cleans the phone numbers to keep digits only
