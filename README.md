@@ -147,3 +147,8 @@ JOIN top_revenue_med t
 WHERE m.stock_movement = 'stock out'
 GROUP BY m.med_name;
 
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
